@@ -95,3 +95,8 @@ a{
 	color: white;
 	padding: 10px 25px;
 }
+.reset-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
