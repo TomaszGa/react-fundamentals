@@ -7,7 +7,7 @@ var Switch = ReactRouter.Switch;
 var Nav = require('./Nav');
 var Home = require('./Home');
 var Battle = require('./Battle');
-var Results = require('./Results');
+var Results = require('./Results'); 
 class App extends React.Component {
   render() {
      return (
