@@ -1,28 +1,10 @@
 var React = require('react');
 var PropTypes = require('prop-types');
 var Link = require('react-router-dom').Link;
+var PlayerPreview = require('./PlayerPreview');
 
-function PlayerPreview(props) {
-  return (
-    <div> 
-      <div className='column'>
-        <img className='avatar' src={props.avatar} alt={'Avatar for ' + props.username}/>
-        <h2 className='username'>@{props.username}</h2>
-      <button className='button' onClick={props.onReset.bind(null, props.id)}>
-        Reset
-      </button>        
-      </div>
 
-    </div>
-  )
-}
 
-PlayerPreview.propTypes = {
-  avatar: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
-  onReset: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired
-}
 
 class PlayerInput extends React.Component{
   constructor(props){
@@ -121,11 +103,19 @@ class Battle extends React.Component{
           {!playerOneName && <PlayerInput
           id='playerOne' label='Player One' onSubmit={this.handleSubmit} />}
           {playerOneImage !== null && 
-            <PlayerPreview avatar={playerOneImage} username={playerOneName} onReset={this.handleReset} id='playerOne' />}
+            <PlayerPreview avatar={playerOneImage} username={playerOneName}>
+              <button className='button' onClick={this.handleReset.bind(null, 'playerOne')}>
+                Reset
+              </button>  
+            </PlayerPreview>}
           {!playerTwoName && <PlayerInput
           id='playerTwo' label='Player Two' onSubmit={this.handleSubmit} />}
           {playerTwoImage !== null && 
-            <PlayerPreview avatar={playerTwoImage} username={playerTwoName} onReset={this.handleReset} id='playerTwo' />}                    
+            <PlayerPreview avatar={playerTwoImage} username={playerTwoName}>
+              <button className='button' onClick={this.handleReset.bind(null, 'playerTwo')}>
+                Reset
+              </button>  
+            </PlayerPreview>}                    
         </div>
       <div className='reset-container'>
           {playerOneImage && playerTwoImage && 
